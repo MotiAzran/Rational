@@ -1,9 +1,8 @@
-/*
+ /*
  * Moti Azran
  *
  * Implements rational number class
  */
-package com.moti;
 
 /**
  * Rational number class.
@@ -45,10 +44,22 @@ public class Rational {
     /**
      * Checks if this number is equal to the
      * frac number
-     * @param frac another rational for comparison
+     * @param other object to compare
      * @return true if the numbers are equals, otherwise false
      */
-    public boolean equals(Rational frac) {
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        } else if (null == other) {
+            return false;
+        }
+
+        if (!(other instanceof Rational)) {
+            return false;
+        }
+
+        Rational frac = (Rational) other;
+
         return (_numerator * frac._denominator) == (frac._numerator * _denominator);
     }
 
@@ -71,11 +82,8 @@ public class Rational {
      * @return The difference of both rationals
      */
     public Rational minus(Rational frac) {
-        // Calculate the numerator and denominator of the difference
-        int diffNumerator = (_numerator * frac._denominator) - (frac._numerator * _denominator);
-        int diffDenominator = _denominator * frac._denominator;
-
-        return new Rational(diffNumerator, diffDenominator);
+        // Calculate the sum of this and the opposite frac
+        return plus(frac.multiply(new Rational(-1, 1)));
     }
 
     /**
@@ -136,7 +144,7 @@ public class Rational {
      */
     public Rational reduce() {
         // Find the greatest common divisor of the numerator and the denominator
-        int commonDivisor = Math.abs(gcd(_numerator, _denominator));
+        int commonDivisor = gcd(Math.abs(_numerator), _denominator);
 
         int reducedNumerator = _numerator / commonDivisor;
         int reducedDenominator = _denominator / commonDivisor;
