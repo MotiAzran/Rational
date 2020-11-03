@@ -20,6 +20,8 @@ public class Main {
         Rational frac2 = getRationalFromUser();
 
         // Print fractions relations
+        System.out.printf("First rational: numerator=%d, denominator=%d\n", frac1.getNumerator(), frac1.getDenominator());
+        System.out.printf("Second rational: numerator=%d, denominator=%d\n", frac2.getNumerator(), frac2.getDenominator());
         System.out.printf("%s > %s: %s\n", frac1, frac2, frac1.greaterThan(frac2)? "True" : "False");
         System.out.printf("%s == %s: %s\n", frac1, frac2, frac1.equals(frac2)? "True" : "False");
         System.out.printf("%s + %s = %s\n", frac1, frac2, frac1.plus(frac2).reduce());

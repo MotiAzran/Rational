@@ -16,7 +16,7 @@ public class Rational {
     /**
      * Initialize the rational number,
      * if the denominator is equal to 0
-     * or less than 0, the number initializes to 0
+     * or less than 0, the number initializes to 0/1
      * @param numerator the rational numerator
      * @param denominator the rational denominator
      */
@@ -83,7 +83,7 @@ public class Rational {
      */
     public Rational minus(Rational frac) {
         // Calculate the sum of this and the opposite frac
-        return plus(frac.multiply(new Rational(-1, 1)));
+        return plus(new Rational(frac._numerator * -1, frac._denominator));
     }
 
     /**
